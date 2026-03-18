@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace League\MimeTypeDetection;
 
 class OverridingExtensionToMimeTypeMap implements ExtensionToMimeTypeMap

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use League\MimeTypeDetection\Generation\CombinedMimeTypeProvider;
 use League\MimeTypeDetection\Generation\ExtensionToMimeTypeMapGenerator;
 use League\MimeTypeDetection\Generation\FlysystemProvidedMimeTypeProvider;
@@ -17,4 +19,3 @@ $dumper = new ExtensionToMimeTypeMapGenerator(
 $source = $dumper->dump('GeneratedExtensionToMimeTypeMap');
 
 file_put_contents(__DIR__ . '/../src/GeneratedExtensionToMimeTypeMap.php', $source);
-
