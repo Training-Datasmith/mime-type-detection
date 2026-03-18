@@ -9,7 +9,7 @@ class CombinedMimeTypeProvider implements MimeTypeProvider
     /**
      * @var MimeTypeProvider[]
      */
-    private $providers;
+    private array $providers;
 
     public function __construct(MimeTypeProvider ... $providers)
     {

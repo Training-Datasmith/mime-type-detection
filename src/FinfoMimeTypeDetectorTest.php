@@ -8,10 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class FinfoMimeTypeDetectorTest extends TestCase
 {
-    /**
-     * @var FinfoMimeTypeDetector
-     */
-    private $detector;
+    private \League\MimeTypeDetection\FinfoMimeTypeDetector $detector;
 
     protected function setUp(): void
     {

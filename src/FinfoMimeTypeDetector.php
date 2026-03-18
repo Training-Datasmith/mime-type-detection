@@ -19,25 +19,16 @@ class FinfoMimeTypeDetector implements MimeTypeDetector, ExtensionLookup
         'inode/x-empty',
     ];
 
-    /**
-     * @var finfo
-     */
-    private $finfo;
+    private \finfo $finfo;
 
-    /**
-     * @var ExtensionToMimeTypeMap
-     */
-    private $extensionMap;
+    private \League\MimeTypeDetection\ExtensionToMimeTypeMap $extensionMap;
 
-    /**
-     * @var int|null
-     */
-    private $bufferSampleSize;
+    private ?int $bufferSampleSize;
 
     /**
      * @var array<string>
      */
-    private $inconclusiveMimetypes;
+    private array $inconclusiveMimetypes;
 
     public function __construct(
         string $magicFile = '',

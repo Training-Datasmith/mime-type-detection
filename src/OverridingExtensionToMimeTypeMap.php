@@ -4,15 +4,12 @@ namespace League\MimeTypeDetection;
 
 class OverridingExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
 {
-    /**
-     * @var ExtensionToMimeTypeMap
-     */
-    private $innerMap;
+    private \League\MimeTypeDetection\ExtensionToMimeTypeMap $innerMap;
 
     /**
      * @var string[]
      */
-    private $overrides;
+    private array $overrides;
 
     /**
      * @param array<string, string>  $overrides

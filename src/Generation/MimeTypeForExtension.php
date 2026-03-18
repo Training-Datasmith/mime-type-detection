@@ -6,15 +6,9 @@ namespace League\MimeTypeDetection\Generation;
 
 class MimeTypeForExtension
 {
-    /**
-     * @var string
-     */
-    private $mimeType;
+    private string $mimeType;
 
-    /**
-     * @var string
-     */
-    private $extension;
+    private string $extension;
 
     public function __construct(string $mimeType, string $extension)
     {

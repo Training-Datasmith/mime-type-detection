@@ -10,10 +10,7 @@ use function join;
 
 class ExtensionToMimeTypeMapGenerator
 {
-    /**
-     * @var MimeTypeProvider
-     */
-    private $provider;
+    private \League\MimeTypeDetection\Generation\MimeTypeProvider $provider;
 
     public function __construct(MimeTypeProvider $provider)
     {
@@ -41,8 +38,7 @@ class ExtensionToMimeTypeMapGenerator
         $template = file_get_contents(__DIR__ . '/ExtensionToMimeTypeMap.php.template');
         $template = str_replace('ExtensionToMimeTypeMapClass', $className, $template);
         $template = str_replace(' = [\'ext2mime\']', ' = [' . join('', $mimeTypes) . PHP_EOL . '    ]', $template);
-        $template = str_replace(' = [\'mime2ext\']', ' = [' . join('', $compiledReverseLookup) . PHP_EOL . '    ]', $template);
 
-        return $template;
+        return str_replace(' = [\'mime2ext\']', ' = [' . join('', $compiledReverseLookup) . PHP_EOL . '    ]', $template);
     }
 }
