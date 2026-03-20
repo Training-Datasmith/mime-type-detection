@@ -1,13 +1,12 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace League\Mime_Type_Detection\Generation;
 
-namespace League\MimeTypeDetection\Generation;
-
-interface MimeTypeProvider
+interface Mime_Type_Provider
 {
     /**
      * @return MimeTypeForExtension[]
      */
-    public function provideMimeTypes(): array;
+    public function provide_mime_types(): array;
 }

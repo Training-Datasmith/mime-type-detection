@@ -1,10 +1,9 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace League\Mime_Type_Detection;
 
-namespace League\MimeTypeDetection;
-
-interface ExtensionToMimeTypeMap
+interface Extension_To_Mime_Type_Map
 {
-    public function lookupMimeType(string $extension): ?string;
+    public function lookup_mime_type(string $extension): ?string;
 }

@@ -1,53 +1,39 @@
 <?php
 
-declare(strict_types=1);
-
-namespace League\MimeTypeDetection;
+declare (strict_types=1);
+namespace League\Mime_Type_Detection;
 
 use const PATHINFO_EXTENSION;
-
-class ExtensionMimeTypeDetector implements MimeTypeDetector, ExtensionLookup
+class Extension_Mime_Type_Detector implements Mime_Type_Detector, Extension_Lookup
 {
-    private \League\MimeTypeDetection\ExtensionToMimeTypeMap $extensions;
-
-    public function __construct(?ExtensionToMimeTypeMap $extensions = null)
+    private \League\Mime_Type_Detection\Extension_To_Mime_Type_Map $extensions;
+    public function __construct(?Extension_To_Mime_Type_Map $extensions = null)
     {
-        $this->extensions = $extensions ?: new GeneratedExtensionToMimeTypeMap();
+        $this->extensions = $extensions ?: new Generated_Extension_To_Mime_Type_Map();
     }
-
-    public function detectMimeType(string $path, $contents): ?string
+    public function detect_mime_type(string $path, $contents): ?string
     {
-        return $this->detectMimeTypeFromPath($path);
+        return $this->detect_mime_type_from_path($path);
     }
-
-    public function detectMimeTypeFromPath(string $path): ?string
+    public function detect_mime_type_from_path(string $path): ?string
     {
         $extension = strtolower(pathinfo($path, PATHINFO_EXTENSION));
-
-        return $this->extensions->lookupMimeType($extension);
+        return $this->extensions->lookup_mime_type($extension);
     }
-
-    public function detectMimeTypeFromFile(string $path): ?string
+    public function detect_mime_type_from_file(string $path): ?string
     {
-        return $this->detectMimeTypeFromPath($path);
+        return $this->detect_mime_type_from_path($path);
     }
-
-    public function detectMimeTypeFromBuffer(string $contents): ?string
+    public function detect_mime_type_from_buffer(string $contents): ?string
     {
         return null;
     }
-
-    public function lookupExtension(string $mimetype): ?string
+    public function lookup_extension(string $mimetype): ?string
     {
-        return $this->extensions instanceof ExtensionLookup
-            ? $this->extensions->lookupExtension($mimetype)
-            : null;
+        return $this->extensions instanceof Extension_Lookup ? $this->extensions->lookup_extension($mimetype) : null;
     }
-
-    public function lookupAllExtensions(string $mimetype): array
+    public function lookup_all_extensions(string $mimetype): array
     {
-        return $this->extensions instanceof ExtensionLookup
-            ? $this->extensions->lookupAllExtensions($mimetype)
-            : [];
+        return $this->extensions instanceof Extension_Lookup ? $this->extensions->lookup_all_extensions($mimetype) : [];
     }
 }

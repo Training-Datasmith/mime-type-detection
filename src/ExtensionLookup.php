@@ -1,15 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace League\Mime_Type_Detection;
 
-namespace League\MimeTypeDetection;
-
-interface ExtensionLookup
+interface Extension_Lookup
 {
-    public function lookupExtension(string $mimetype): ?string;
-
+    public function lookup_extension(string $mimetype): ?string;
     /**
      * @return string[]
      */
-    public function lookupAllExtensions(string $mimetype): array;
+    public function lookup_all_extensions(string $mimetype): array;
 }

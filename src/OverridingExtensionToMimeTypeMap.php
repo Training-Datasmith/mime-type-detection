@@ -1,29 +1,25 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace League\Mime_Type_Detection;
 
-namespace League\MimeTypeDetection;
-
-class OverridingExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
+class Overriding_Extension_To_Mime_Type_Map implements Extension_To_Mime_Type_Map
 {
-    private \League\MimeTypeDetection\ExtensionToMimeTypeMap $innerMap;
-
+    private \League\Mime_Type_Detection\Extension_To_Mime_Type_Map $inner_map;
     /**
      * @var string[]
      */
     private array $overrides;
-
     /**
      * @param array<string, string>  $overrides
      */
-    public function __construct(ExtensionToMimeTypeMap $innerMap, array $overrides)
+    public function __construct(Extension_To_Mime_Type_Map $inner_map, array $overrides)
     {
-        $this->innerMap = $innerMap;
+        $this->inner_map = $inner_map;
         $this->overrides = $overrides;
     }
-
-    public function lookupMimeType(string $extension): ?string
+    public function lookup_mime_type(string $extension): ?string
     {
-        return $this->overrides[$extension] ?? $this->innerMap->lookupMimeType($extension);
+        return $this->overrides[$extension] ?? $this->inner_map->lookup_mime_type($extension);
     }
 }

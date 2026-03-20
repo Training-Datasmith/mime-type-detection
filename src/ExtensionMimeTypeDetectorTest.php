@@ -1,42 +1,36 @@
 <?php
 
-declare(strict_types=1);
-
-namespace League\MimeTypeDetection;
+declare (strict_types=1);
+namespace League\Mime_Type_Detection;
 
 use Generator;
-use PHPUnit\Framework\TestCase;
-
-class ExtensionMimeTypeDetectorTest extends TestCase
+use Php_Unit\Framework\Test_Case;
+class Extension_Mime_Type_Detector_Test extends Test_Case
 {
     /**
      * @test
      *
      * @dataProvider expectedLookupResults
      */
-    public function looking_up_mimetype(string $path, ?string $expectedMimeType): void
+    public function looking_up_mimetype(string $path, ?string $expected_mime_type): void
     {
-        $detector = new ExtensionMimeTypeDetector();
-        $this->assertEquals($expectedMimeType, $detector->detectMimeType($path, 'contents'));
-        $this->assertEquals($expectedMimeType, $detector->detectMimeTypeFromFile($path));
-        $this->assertEquals($expectedMimeType, $detector->detectMimeTypeFromPath($path));
+        $detector = new Extension_Mime_Type_Detector();
+        $this->assert_equals($expected_mime_type, $detector->detect_mime_type($path, 'contents'));
+        $this->assert_equals($expected_mime_type, $detector->detect_mime_type_from_file($path));
+        $this->assert_equals($expected_mime_type, $detector->detect_mime_type_from_path($path));
     }
-
     /**
      * @test
      */
     public function detecting_from_bugger_always_returns_null(): void
     {
-        $detector = new ExtensionMimeTypeDetector();
+        $detector = new Extension_Mime_Type_Detector();
         /** @var string $contents */
         $contents = file_get_contents(__DIR__ . '/../test_files/flysystem.svg');
-
-        $mimeType = $detector->detectMimeTypeFromBuffer($contents);
-
-        $this->assertNull($mimeType);
+        $mime_type = $detector->detect_mime_type_from_buffer($contents);
+        $this->assert_null($mime_type);
     }
-
-    public static function expectedLookupResults(): Generator
+    public static function expected_lookup_results(): Generator
     {
         yield ['thing.jpg', 'image/jpeg'];
         yield ['file.svg', 'image/svg+xml'];

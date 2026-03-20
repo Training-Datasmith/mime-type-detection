@@ -1,26 +1,21 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace League\Mime_Type_Detection\Generation;
 
-namespace League\MimeTypeDetection\Generation;
-
-class MimeTypeForExtension
+class Mime_Type_For_Extension
 {
-    private string $mimeType;
-
+    private string $mime_type;
     private string $extension;
-
-    public function __construct(string $mimeType, string $extension)
+    public function __construct(string $mime_type, string $extension)
     {
-        $this->mimeType = $mimeType;
+        $this->mime_type = $mime_type;
         $this->extension = $extension;
     }
-
-    public function mimeType(): string
+    public function mime_type(): string
     {
-        return $this->mimeType;
+        return $this->mime_type;
     }
-
     public function extension(): string
     {
         return $this->extension;
