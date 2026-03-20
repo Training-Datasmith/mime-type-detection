@@ -23,7 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-            "League\\MimeTypeDetection\\": "src"
+            "League\\Mime_Type_Detection\\": "src"
         }
     },
     "config": {
